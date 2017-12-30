@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+    
+    <p><%= notice %></p>
+
+<!--%= link_to "つぶやく", new_post_path %-->
+
+<!--h1>ツイート一覧</h1-->
+
+<% @posts.each do |post| %>
+  <%= profile_img(post.user) if profile_img(post.user) %>
+  <p>投稿者：<%= post.user.name %></p>
+  
+  <% if post.image? %>
+ 　　　 <%= image_tag(post.image) %>
+　<% end %>
+  <p>本文:<%= post.content %></p>
+  <%= Time.now.strftime("%Y年%m月%d日 %H時%M分") %>
+  <br>
+  <%= link_to "編集", edit_post_path(post.id), class: 'btn btn-default btn-sm btn-success'  %>
+  
+  <%= link_to "削除", post_path(post.id), method: :delete,data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger'  %>
+  <p>------------------------------------------------  </p>
+<% end %>
+  </div>
+</div>
