@@ -9,19 +9,35 @@
 <!--h1>ツイート一覧</h1-->
 
 <% @posts.each do |post| %>
-  <%= profile_img(post.user) if profile_img(post.user) %>
-  <p>投稿者：<%= post.user.name %></p>
-  
-  <% if post.image? %>
- 　　　 <%= image_tag(post.image) %>
-　<% end %>
-  <p>本文:<%= post.content %></p>
-  <%= Time.now.strftime("%Y年%m月%d日 %H時%M分") %>
-  <br>
-  <%= link_to "編集", edit_post_path(post.id), class: 'btn btn-default btn-sm btn-success'  %>
-  
-  <%= link_to "削除", post_path(post.id), method: :delete,data: { confirm: '本当に削除していいですか？' }, class: 'btn btn-default btn-sm btn btn-danger'  %>
-  <p>------------------------------------------------  </p>
+         <table>
+           <tr>
+             <td><%= profile_img(post.user) if profile_img(post.user) %></td>
+             <td align = "left"><h5><p>投稿者：</p><%= post.user.name %></h5></td>
+          </tr>
+
+          <tr>
+            <td td colspan="2">
+              <% if post.image? %>
+ 　　　　     　　　　　  <%= link_to image_tag(post.image, { :border => '0', :alt => '編集'}), edit_post_path(post.id) %>
+　　　　　　  <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><h6><!--%= post.title %--></h6></td>
+          </tr>
+          <tr>
+            <td colspan="2"><h6><%= post.content %></h6></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= link_to '投稿画像の編集', edit_post_path(post.id), class: 'btn btn-warning btn-sm'%>
+              <%= link_to '投稿画像の削除', post_path(post.id), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        
 <% end %>
   </div>
 </div>

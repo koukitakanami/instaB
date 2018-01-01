@@ -9,8 +9,9 @@
               </ul>
             </div>
          <% end %>
-
+      <br>
       <%= f.label :picture %>
+      <br>
       <%= image_tag @post.image.url if @post.image? %>
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>

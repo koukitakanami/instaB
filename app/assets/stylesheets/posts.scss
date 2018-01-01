@@ -100,3 +100,26 @@ body {
   float: right;
   width: auto;
 }
+
+.wrapper  {
+    margin-bottom: 10px;
+    padding: 20px 20px 20px 20px;
+    .row {
+        padding: 5px 15px 15px 15px;
+        margin-bottom: 25px;
+        text-align: center;
+        word-wrap: break-word;
+    }
+}
+
+
+
+table{  
+    table-layout:fixed; 
+    background-color: #e0e0e0;
+}
+
+td,th{  
+    vertical-align: top;
+    width:200px;  
+}  
