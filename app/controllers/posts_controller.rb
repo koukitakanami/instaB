@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     #Post.create(posts_params)
     if @post.save
       redirect_to posts_path, notice: "投稿しました！"
-      NoticeMailer.sendmail_blog(@post).deliver
+      NoticeMailer.sendmail_blog.deliver
     else
       # 入力フォームを再描画します。
       render 'new'
